@@ -14,7 +14,7 @@ cmake \
     -DCPACK_PACKAGING_INSTALL_PREFIX=$ROCM_INSTALL_DIR \
     -DCPACK_GENERATOR=DEB \
     -G Ninja \
-    $ROCM_GIT_DIR/ROCm-CompilerSupport/lib/comgr
+    $ROCM_GIT_DIR/llvm-project/amd/comgr 
 
 cmake --build .
 cmake --build . --target package
