@@ -1,12 +1,14 @@
 
 set -e
 
-TARGET_DIR=$ROCM_BUILD_DIR/rock-dkms/usr/src/amdgpu-5.3-63
+TARGET_DIR=$ROCM_BUILD_DIR/rock-dkms/usr/src/amdgpu-6.8-1024
 
 mkdir -p $TARGET_DIR
 
 cd $TARGET_DIR
 
+cp $ROCM_GIT_DIR/ROCK-Kernel-Driver/drivers/gpu/drm/drm_gem_ttm_helper.c $TARGET_DIR
+cp $ROCM_GIT_DIR/ROCK-Kernel-Driver/drivers/gpu/drm/drm_buddy.c $TARGET_DIR
 cp -R $ROCM_GIT_DIR/ROCK-Kernel-Driver/drivers/gpu/drm/amd $TARGET_DIR
 
 # cp $ROCM_GIT_DIR/ROCK-Kernel-Driver/drivers/gpu/drm/amd/dkms/dkms.conf $TARGET_DIR
@@ -49,8 +51,8 @@ bash autogen.sh
 cd ../..
 
 cd ../../..
-cp ../../meta/rock-dkms_5.3-63_all . -R
-cp -R usr rock-dkms_5.3-63_all/
+cp ../../meta/rock-dkms_6.8-1024_all . -R
+cp -R usr rock-dkms_6.8-1024_all/
 
-dpkg -b rock-dkms_5.3-63_all
+dpkg -b rock-dkms_6.8-1024_all
 
